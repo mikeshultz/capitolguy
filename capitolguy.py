@@ -56,6 +56,7 @@ class CapitolGuy(irc.IRCClient):
     versionName = 'capitolguy'
     versionNum = __version__
     sourceURL = 'https://github.com/mikeshultz/capitolguy'
+    motd = 'Generic MOTD.  What is this even used for?'
     
     def connectionMade(self):
         irc.IRCClient.realname = 'The Capitol Guy'
