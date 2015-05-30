@@ -6,7 +6,9 @@ Proof of concept of an IRC bot that utilizes the [Vote Smart API](https://votesm
 
 You can always get help by running `python capitolguy.py --help`
 
-    usage: capitolguy.py [-h] [--nick N] [--server SERVER] [--port PORT] C [C ...]
+    usage: capitolguy.py [-h] [--nick N] [--server SERVER] [--port PORT]
+                         [--name NAME]
+                         C [C ...]
 
     Handle requests for querying Vote Smart data.
 
@@ -18,6 +20,7 @@ You can always get help by running `python capitolguy.py --help`
       --nick N         Nickname the bot should use, if available.
       --server SERVER  IRC server to connect to.
       --port PORT      IRC server's port to connect to.
+      --name NAME      Bot's "Real Name"
 
 ### Configure
 
