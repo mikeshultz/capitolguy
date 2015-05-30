@@ -1,9 +1,10 @@
-# Copyright (c) Mike Shultz 2015
+""" 
+Copyright (c) Mike Shultz 2015
 
 
+IRC bot that utilizes the Vote Smart API
 """
-VoteSmart IRC bot
-"""
+__version__ = "0.1.0"
 
 import sys, importlib, re, argparse, ConfigParser
 
@@ -11,9 +12,7 @@ from twisted.words.protocols import irc
 from twisted.internet import reactor, protocol
 from twisted.python import log
 
-# system imports
-#import time, sys
-
+# handle config
 config = ConfigParser.ConfigParser()
 config.read('config.ini')
 CONFIG = {}
@@ -34,7 +33,8 @@ parser.add_argument('--server', dest = 'server', default = 'irc.freenode.net', h
 parser.add_argument('--port', dest = 'port', default = 6667, help = 'IRC server\'s port to connect to.')
 
 args = parser.parse_args()
-print args
+if CONFIG['debug']:
+    print args
 
 commands = {}
 

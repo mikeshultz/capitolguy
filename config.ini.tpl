@@ -1,5 +1,5 @@
 [Main]
-debug: true
+debug: false
 
 [Commands]
 base: repeat, sayhi

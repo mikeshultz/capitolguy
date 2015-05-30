@@ -1,5 +1,5 @@
 """ 
-Copyright (c) Project Vote Smart 2015
+Copyright (c) Mike Shultz 2015
 
 
 VoteSmart IRC bot base commands module
@@ -26,7 +26,6 @@ class StandardCommand():
         commandString = re.compile(r"""^\!([\d\w]+)[\b]*([\d\w _\-'\\/\.\!\?\+=\^\%]*)""")
         res = re.match(commandString, msg)
         if res:
-            #if self.command == res.group(1):
             print "I'm handling this command!"
 
             self.command = res.group(1)
