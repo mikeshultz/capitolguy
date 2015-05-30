@@ -16,12 +16,16 @@ from twisted.python import log
 
 config = ConfigParser.ConfigParser()
 config.read('config.ini')
-global CONFIG
 CONFIG = {}
+
+# general app config
 if config.get('Main', 'debug') == 'true': 
     CONFIG['debug'] = True
 else:
     CONFIG['debug'] = False
+
+# config for capitolguy
+CONFIG ['votesmart-api-key'] = config.get('VoteSmart', 'key')
 
 parser = argparse.ArgumentParser(description = 'Handle requests for querying Vote Smart data.')
 parser.add_argument('channel', metavar = 'C', nargs = '+', help = 'IRC channel(s) to join.')

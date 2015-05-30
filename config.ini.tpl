@@ -6,4 +6,4 @@ base: repeat, sayhi
 capitolguy: statefact
 
 [VoteSmart]
-wut: true
+key: asdf1234

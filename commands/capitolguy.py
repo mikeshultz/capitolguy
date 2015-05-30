@@ -11,7 +11,6 @@ from string import Template
 from commands.StandardCommand import StandardCommand
 
 from votesmart import votesmart
-votesmart.apikey = ''
 
 states = {
     'NA': 'National',
@@ -122,6 +121,7 @@ class statefact(StandardCommand):
         return facts
 
     def getRandomFact(self, state):
+        votesmart.apikey = self.conf['votesmart-api-key']
         state_data = votesmart.state.getState(state.upper())
         state_dict = self.cleanFacts(state_data.__dict__)
         return random.choice(state_dict.items())
