@@ -4,7 +4,7 @@ Copyright (c) Mike Shultz 2015
 
 IRC bot that utilizes the Vote Smart API
 """
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 import sys, importlib, re, argparse, ConfigParser
 

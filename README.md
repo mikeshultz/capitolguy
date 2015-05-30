@@ -64,3 +64,18 @@ Command that will provide the districts for a particular 5-digit or 9-digit USPS
 
     <mikeshultz> !districtbyzip 19403-2801
     <CapitolGuy> I found 3 districts for 19403-2801: U.S. House District 6; State House District 150; State Senate District 44.  More Information: https://votesmart.org/search?q=19403-2801
+
+### !candidatesearch
+
+Command to search for a candidate by last name.
+
+    <mikeshultz> !candidatesearch Rubio
+    <CapitolGuy> Marco Rubio: https://votesmart.org/candidate/1601
+
+### !officialsearch
+
+Command to search for office holders by last name.
+
+    <mikeshultz> !officialsearch Obama
+    <CapitolGuy> President Barack Obama II: https://votesmart.org/candidate/9490
+    <CapitolGuy> Senator Erin Oban: https://votesmart.org/candidate/152042
