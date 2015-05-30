@@ -24,4 +24,4 @@ class sayhi(StandardCommand):
 
     def handleCommand(self, msg = None): 
         """ Repeat what was said to you """
-        return "Hello, I am Capitol Guy!"
+        return "Hello, I am The Capitol Guy! I'm a government and elections transparency bot for #votesmart.  Do let them know if I'm acting strangely."

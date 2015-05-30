@@ -41,7 +41,7 @@ You can run these commands in the IRC channel and the bot will respond(unless th
 Command that makes the bot announce itself.
 
     <mikeshultz> !sayhi
-    <VoteSmartBot> Hello, I am Capitol Guy!
+    <VoteSmartBot> Hello, I am The Capitol Guy! I'm a government and elections transparency bot for #votesmart.  Do let them know if I'm acting strangely.
 
 ### !repeat
 
