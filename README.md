@@ -1,3 +1,4 @@
+![Logo](//votesmart.org/static/images/subpages/share/capitol_guy_blue_trans.gif)
 # capitolguy
 Proof of concept of an IRC bot that utilizes the [Vote Smart API](https://votesmart.org/share/api).
 
