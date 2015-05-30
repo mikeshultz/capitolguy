@@ -37,45 +37,57 @@ Run the IRC daemon.
 
 You can run these commands in the IRC channel and the bot will respond(unless they were removed from `config.ini`).
 
-### !sayhi
+### Base Commands
+
+#### !sayhi
 
 Command that makes the bot announce itself.
 
     <mikeshultz> !sayhi
     <VoteSmartBot> Hello, I am The Capitol Guy! I'm a government and elections transparency bot for #votesmart.  Do let them know if I'm acting strangely.
 
-### !repeat
+#### !repeat
 
 Stupid command to repeat whatever you tell it.
 
     <mikeshultz> !repeat I'm a little teapot!
     <VoteSmartBot> I'm a little teapot!
 
-### !statefact
+### Vote Smart Specific Commands
 
-Command to query the Vote Smart API for a random state fact.  It can accept codes(MT) or name(montana), but they *do* need to be spelled properly.
+#### !bill
 
-    <mikeshultz> !statefact Maine
-    <VoteSmartBot> Maine's highest point is Mt. Katahdin, 5,268 ft.
+Command that provides minimal data on a bill including a link to the page on votesmart.org for more information.
 
-### !districtbyzip
+    <mikeshultz> !bill HR 3361
+    <CapitolGuy> USA FREEDOM Act(HR 3361).  More information: https://votesmart.org/bill/18243
+    <CapitolGuy> (HR 3361).  More information: https://votesmart.org/bill/18243
 
-Command that will provide the districts for a particular 5-digit or 9-digit USPS Zip code.
-
-    <mikeshultz> !districtbyzip 19403-2801
-    <CapitolGuy> I found 3 districts for 19403-2801: U.S. House District 6; State House District 150; State Senate District 44.  More Information: https://votesmart.org/search?q=19403-2801
-
-### !candidatesearch
+#### !candidatesearch
 
 Command to search for a candidate by last name.
 
     <mikeshultz> !candidatesearch Rubio
     <CapitolGuy> Marco Rubio: https://votesmart.org/candidate/1601
 
-### !officialsearch
+#### !districtbyzip
+
+Command that will provide the districts for a particular 5-digit or 9-digit USPS Zip code.
+
+    <mikeshultz> !districtbyzip 19403-2801
+    <CapitolGuy> I found 3 districts for 19403-2801: U.S. House District 6; State House District 150; State Senate District 44.  More Information: https://votesmart.org/search?q=19403-2801
+
+#### !officialsearch
 
 Command to search for office holders by last name.
 
     <mikeshultz> !officialsearch Obama
     <CapitolGuy> President Barack Obama II: https://votesmart.org/candidate/9490
     <CapitolGuy> Senator Erin Oban: https://votesmart.org/candidate/152042
+
+#### !statefact
+
+Command to query the Vote Smart API for a random state fact.  It can accept codes(MT) or name(montana), but they *do* need to be spelled properly.
+
+    <mikeshultz> !statefact Maine
+    <VoteSmartBot> Maine's highest point is Mt. Katahdin, 5,268 ft.

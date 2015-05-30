@@ -648,3 +648,33 @@ class officialsearch(StandardCommand):
                 total += 1
 
         return message
+
+class bill(StandardCommand):
+    """ show information about a bill """
+
+    def handleCommand(self, args = None):
+        """ Get officials with a levenstein search"""
+
+        if self.conf['debug']:
+            print 'args %s - %s' % (self.args, args)
+
+        votesmart.apikey = self.conf['votesmart-api-key']
+        bills = None
+
+        try:
+            bills = votesmart.votes.getByBillNumber(self.args)
+            message = ''
+            total = 0
+        except VotesmartApiError as e:
+            message = str(e.message) + '. Try formatting without periods, like HR 123.  Selection information: https://votesmart.org/bills#about_kv'
+
+        if bills:
+            for b in bills:
+                if self.conf['debug']:
+                    print dir(b)
+                #target_bill = votesmart.votes.getBill(b.billId)
+                #if self.conf['debug']:
+                #    print dir(target_bill)
+                message += '\n%s(%s).  %s' % (str(b.title), str(b.billNumber), 'https://votesmart.org/bill/' + str(b.billId))
+
+        return message
