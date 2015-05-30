@@ -4,7 +4,7 @@ Copyright (c) Mike Shultz 2015
 
 IRC bot that utilizes the Vote Smart API
 """
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 import sys, importlib, re, argparse, ConfigParser
 
@@ -28,9 +28,10 @@ CONFIG ['votesmart-api-key'] = config.get('VoteSmart', 'key')
 
 parser = argparse.ArgumentParser(description = 'Handle requests for querying Vote Smart data.')
 parser.add_argument('channel', metavar = 'C', nargs = '+', help = 'IRC channel(s) to join.')
-parser.add_argument('--nick', metavar = 'N', type = str, default='CapitolGuy', help = 'Nickname the bot should use, if available.')
+parser.add_argument('--nick', metavar = 'N', dest = 'nick', type = str, default='VoteSmartBot', help = 'Nickname the bot should use, if available.')
 parser.add_argument('--server', dest = 'server', default = 'irc.freenode.net', help = 'IRC server to connect to.')
 parser.add_argument('--port', dest = 'port', default = 6667, help = 'IRC server\'s port to connect to.')
+parser.add_argument('--name', dest = 'name', default = 'The Capitol Guy', help = 'Bot\'s "Real Name"')
 
 args = parser.parse_args()
 if CONFIG['debug']:
@@ -50,9 +51,14 @@ for m in config.items('Commands'):
 class CapitolGuy(irc.IRCClient):
     """A logging IRC bot."""
     
-    nickname = 'VoteSmartBot'
+    nickname = args.nick
+    realname = args.name
+    versionName = 'capitolguy'
+    versionNum = __version__
+    sourceURL = 'https://github.com/mikeshultz/capitolguy'
     
     def connectionMade(self):
+        irc.IRCClient.realname = 'The Capitol Guy'
         irc.IRCClient.connectionMade(self)
         
     def connectionLost(self, reason):

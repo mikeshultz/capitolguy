@@ -3,7 +3,7 @@ debug: false
 
 [Commands]
 base: repeat, sayhi
-capitolguy: statefact
+capitolguy: statefact, districtbyzip
 
 [VoteSmart]
 key: asdf1234

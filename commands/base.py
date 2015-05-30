@@ -20,8 +20,17 @@ class repeat(StandardCommand):
         return say.strip()
 
 class sayhi(StandardCommand): 
-    """ Repeat what is said """
+    """ Announce myself """
 
     def handleCommand(self, msg = None): 
         """ Repeat what was said to you """
         return "Hello, I am The Capitol Guy! I'm a government and elections transparency bot for #votesmart.  Do let them know if I'm acting strangely."
+
+class commands(StandardCommand):
+    """ Give instructions on how to get comamnds, or if a nick is 
+        defined, send it to a specific user.
+    """
+    def handleCommand(self, msg = None): 
+        """ Command help """
+        # TODO: Can we get this to dynamicaly generate?
+        return "Command is not implemented."

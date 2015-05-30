@@ -29,7 +29,7 @@ class StandardCommand():
             print "I'm handling this command!"
 
             self.command = res.group(1)
-            self.args = res.group(2)
+            self.args = res.group(2).strip()
         
             print 'Command: %s' % self.command
             print 'Arg(s): %s' % self.args
