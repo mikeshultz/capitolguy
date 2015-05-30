@@ -10,7 +10,7 @@ from string import Template
 
 from commands.StandardCommand import StandardCommand
 
-from votesmart import votesmart
+from votesmart import votesmart, VotesmartApiError
 
 states = {
     'NA': 'National',
@@ -584,3 +584,67 @@ class districtbyzip(StandardCommand):
                 districts_string += '%s District %s; ' % (offices.get(int(d.officeId)), d.name)
 
         return "I found %s districts for %s: %s.  More Information: https://votesmart.org/search?q=%s" % (district_count, self.args, str(districts_string.strip('; ')), self.args)
+
+class candidatesearch(StandardCommand):
+    """ Show candidates by last namesearch """
+
+    def handleCommand(self, args = None):
+        """ Get candidates with a levenstein search"""
+
+        if self.conf['debug']:
+            print 'args %s - %s' % (self.args, args)
+
+        votesmart.apikey = self.conf['votesmart-api-key']
+        candidates = None
+
+        try:
+            candidates = votesmart.candidates.getByLevenstein(self.args)
+            message = ''
+            total = 0
+        except VotesmartApiError as e:
+            message = str(e.message)
+
+        if candidates:
+            for c in candidates:
+                
+                if total < 5:
+                    name = (c.preferredName + ' ' + c.lastName + ' ' + c.suffix).strip()
+                    message += '\n%s: https://votesmart.org/candidate/%s' % (str(name), str(c.candidateId))
+                elif total == 5:
+                    message += '\nThere were too many results for me to display.  For more information, try https://votesmart.org/search?q=%s' % self.args
+                
+                total += 1
+
+        return message
+
+class officialsearch(StandardCommand):
+    """ Show officials by last namesearch """
+
+    def handleCommand(self, args = None):
+        """ Get officials with a levenstein search"""
+
+        if self.conf['debug']:
+            print 'args %s - %s' % (self.args, args)
+
+        votesmart.apikey = self.conf['votesmart-api-key']
+        officials = None
+
+        try:
+            officials = votesmart.officials.getByLevenstein(self.args)
+            message = ''
+            total = 0
+        except VotesmartApiError as e:
+            message = str(e.message)
+
+        if officials:
+            for c in officials:
+                
+                if total < 5:
+                    name = (c.title + ' ' + c.preferredName + ' ' + c.lastName + ' ' + c.suffix).strip()
+                    message += '\n%s: https://votesmart.org/candidate/%s' % (str(name), str(c.candidateId))
+                elif total == 5:
+                    message += '\nThere were too many results for me to display.  For more information, try https://votesmart.org/search?q=%s' % self.args
+                
+                total += 1
+
+        return message
