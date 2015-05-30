@@ -1,5 +1,5 @@
 # capitolguy
-Proof of concept of an IRC bot that utilizes the Vote Smart API.
+Proof of concept of an IRC bot that utilizes the [Vote Smart API](https://votesmart.org/share/api).
 
 ## Getting started
 
@@ -32,3 +32,27 @@ Run the IRC daemon.
 
     python capitolguy.py --nick CapitolDude --server irc.freenode.net '#mycoolchannel' '#anotherchannel' &
 
+## Commands
+
+You can run these commands in the IRC channel and the bot will respond(unless they were removed from `config.ini`).
+
+### !sayhi
+
+Command that makes the bot announce itself.
+
+    <mikeshultz> !sayhi
+    <VoteSmartBot> Hello, I am Capitol Guy!
+
+### !repeat
+
+Stupid command to repeat whatever you tell it.
+
+    <mikeshultz> !repeat I'm a little teapot!
+    <VoteSmartBot> I'm a little teapot!
+
+### !statefact
+
+Command to query the Vote Smart API for a random state fact.  It can accept codes(MT) or name(montana), but they *do* need to be spelled properly.
+
+    <mikeshultz> !statefact Maine
+    <VoteSmartBot> Maine's highest point is Mt. Katahdin, 5,268 ft.
