@@ -56,3 +56,10 @@ Command to query the Vote Smart API for a random state fact.  It can accept code
 
     <mikeshultz> !statefact Maine
     <VoteSmartBot> Maine's highest point is Mt. Katahdin, 5,268 ft.
+
+#### !districtbyzip
+
+Command that will provide the districts for a particular 5-digit or 9-digit USPS Zip code.
+
+    <mikeshultz> !districtbyzip 19403-2801
+    <CapitolGuy> I found 3 districts for 19403-2801: U.S. House District 6; State House District 150; State Senate District 44.  More Information: https://votesmart.org/search?q=19403-2801
