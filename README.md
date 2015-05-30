@@ -57,7 +57,7 @@ Command to query the Vote Smart API for a random state fact.  It can accept code
     <mikeshultz> !statefact Maine
     <VoteSmartBot> Maine's highest point is Mt. Katahdin, 5,268 ft.
 
-#### !districtbyzip
+### !districtbyzip
 
 Command that will provide the districts for a particular 5-digit or 9-digit USPS Zip code.
 
