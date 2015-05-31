@@ -568,7 +568,7 @@ class districtbyzip(StandardCommand):
                 zip5 = self.args
                 zip4 = None
         except ValueError:
-            return "Invalid zip code."
+            return "%s: Invalid zip code." % self.user
 
         districts = votesmart.district.getByZip(zip5, zip4=zip4)
 
@@ -602,7 +602,7 @@ class candidatesearch(StandardCommand):
             message = ''
             total = 0
         except VotesmartApiError as e:
-            message = str(e.message)
+            message = '%s: $s' % (str(e.message), self.user)
 
         if candidates:
             for c in candidates:
@@ -634,7 +634,7 @@ class officialsearch(StandardCommand):
             message = ''
             total = 0
         except VotesmartApiError as e:
-            message = str(e.message)
+            message = '%s: $s' % (str(e.message), self.user)
 
         if officials:
             for c in officials:
@@ -666,7 +666,7 @@ class bill(StandardCommand):
             message = ''
             total = 0
         except VotesmartApiError as e:
-            message = str(e.message) + '. Try formatting without periods, like HR 123.  Selection information: https://votesmart.org/bills#about_kv'
+            message = '%s: %s. Try formatting without periods, like HR 123.  Selection information: https://votesmart.org/bills#about_kv' % (self.user, str(e.message))
 
         if bills:
             for b in bills:

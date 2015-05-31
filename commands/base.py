@@ -33,4 +33,4 @@ class commands(StandardCommand):
     def handleCommand(self, msg = None): 
         """ Command help """
         # TODO: Can we get this to dynamicaly generate?
-        return "Command is not implemented."
+        return "%s: Command is not implemented." % self.user

@@ -4,13 +4,16 @@ Copyright (c) Mike Shultz 2015
 
 IRC bot that utilizes the Vote Smart API
 """
-__version__ = "0.1.3"
+__version__ = "0.1.4"
 
 import sys, importlib, re, argparse, ConfigParser
+from datetime import datetime
 
 from twisted.words.protocols import irc
 from twisted.internet import reactor, protocol
 from twisted.python import log
+
+from templates import dm_response
 
 # handle config
 config = ConfigParser.ConfigParser()
@@ -49,7 +52,7 @@ for m in config.items('Commands'):
         commands[classToImport] = getattr(sys.modules['commands.' + module], classToImport)
 
 class CapitolGuy(irc.IRCClient):
-    """A logging IRC bot."""
+    """An IRC bot with functions linked to the Vote Smart API."""
     
     nickname = args.nick
     realname = args.name
@@ -82,13 +85,13 @@ class CapitolGuy(irc.IRCClient):
         
         # Check to see if they're sending me a private message
         if channel == self.nickname:
-            msg = "It isn't nice to whisper!  Play nice with the group."
-            self.msg(user, msg)
+            cmd = commands['commands'](CONFIG, user, msg)
+            self.msg(user, cmd.handleCommand())
             return
 
         # Otherwise check to see if it is a message directed at me
         if msg.startswith(self.nickname + ":"):
-            msg = "%s: I am the Capitol Guy!" % user
+            msg = dm_response(**{'user': user, 'time': datetime.now().strftime('%H:%M %Z').strip(), 'day': datetime.now().strftime('%As'), }) 
             self.msg(channel, msg)
 
         if msg.startswith("!"): 
@@ -100,7 +103,7 @@ class CapitolGuy(irc.IRCClient):
 
                 """ If it's a bunk command, forget about it. """
                 try:
-                    cmd = commands[res.group(1)](CONFIG, msg)
+                    cmd = commands[res.group(1)](CONFIG, user, msg)
                     self.msg(channel, cmd.handleCommand())
                 except KeyError: 
                     if CONFIG['debug']:

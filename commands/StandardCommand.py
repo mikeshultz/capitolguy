@@ -16,9 +16,10 @@ class StandardCommand():
     args = None
     message = ''
 
-    def __init__(self, conf, msg):
+    def __init__(self, conf, user, msg):
         "huh"
         self.conf = conf
+        self.user = user
         self.message = msg
         self.parseCommand(msg)
 
